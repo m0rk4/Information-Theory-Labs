@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="by.bsuir.mark.controller.AppController">
+
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <RadioButton fx:id="columnarRB" mnemonicParsing="false" selected="true" text="Columnar transposition">
+                    <font>
+                        <Font name="Times New Roman" size="14.0"/>
+                    </font>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="ciphersRadioButtonGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="vigenereRB" mnemonicParsing="false" text="Vigenère cipher"
+                             toggleGroup="$ciphersRadioButtonGroup">
+                    <font>
+                        <Font name="Times New Roman" size="14.0"/>
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="playfairRB" mnemonicParsing="false" text="Playfair cipher"
+                             toggleGroup="$ciphersRadioButtonGroup">
+                    <font>
+                        <Font name="Times New Roman" size="14.0"/>
+                    </font>
+                </RadioButton>
+                <Label fx:id="langLabel" text="RUS">
+                    <font>
+                        <Font name="Times New Roman Bold Italic" size="14.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="clearButton" mnemonicParsing="false" text="Clear All">
+                    <font>
+                        <Font name="Times New Roman" size="14.0"/>
+                    </font>
+                </Button>
+            </children>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
+    <top>
+        <GridPane alignment="CENTER" hgap="10.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="279.20001220703125" minWidth="10.0"
+                                   prefWidth="37.60003662109373"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="450.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
+            </rowConstraints>
+            <children>
+                <Label text="Key:" GridPane.halignment="LEFT" GridPane.hgrow="NEVER">
+                    <font>
+                        <Font name="Times New Roman" size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="keyTField" prefHeight="26.0" prefWidth="330.0" promptText="Enter Key..."
+                           GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
+                    <font>
+                        <Font name="Times New Roman" size="14.0"/>
+                    </font>
+                </TextField>
+            </children>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </GridPane>
+    </top>
+    <center>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <GridPane alignment="CENTER" hgap="10.0" prefHeight="278.0" prefWidth="600.0" vgap="10.0"
+                          VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="104.60001220703126" minHeight="10.0" prefHeight="30.0"
+                                        vgrow="NEVER"/>
+                        <RowConstraints maxHeight="104.60001220703126" minHeight="10.0" prefHeight="25.599993896484378"
+                                        vgrow="NEVER"/>
+                        <RowConstraints minHeight="10.0" prefHeight="216.60000610351562" vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <children>
+                        <TextArea fx:id="encodedTArea" editable="false" prefHeight="200.0" prefWidth="200.0"
+                                  wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                  GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                            <font>
+                                <Font name="Times New Roman" size="14.0"/>
+                            </font>
+                        </TextArea>
+                        <TextArea fx:id="decodedTArea" editable="false" prefHeight="200.0" prefWidth="200.0"
+                                  wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2"
+                                  GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                            <font>
+                                <Font name="Times New Roman" size="14.0"/>
+                            </font>
+                        </TextArea>
+                        <HBox alignment="BOTTOM_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <Button fx:id="encodeButton" mnemonicParsing="false" text="Encode">
+                                    <font>
+                                        <Font name="Times New Roman" size="14.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets right="10.0"/>
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="saveEncodedButton" mnemonicParsing="false">
+                                    <HBox.margin>
+                                        <Insets left="10.0"/>
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <children>
+                                <Button fx:id="decodeButton" mnemonicParsing="false" text="Decode">
+                                    <font>
+                                        <Font name="Times New Roman" size="14.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets right="10.0"/>
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="saveDecodedButton" mnemonicParsing="false">
+                                    <HBox.margin>
+                                        <Insets left="10.0"/>
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                            <GridPane.margin>
+                                <Insets/>
+                            </GridPane.margin>
+                        </HBox>
+                        <Button fx:id="loadFileButton" mnemonicParsing="false" text="Load File" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Times New Roman" size="14.0"/>
+                            </font>
+                        </Button>
+                        <TextArea fx:id="plainTArea" editable="false" prefHeight="200.0" prefWidth="200.0"
+                                  wrapText="true" GridPane.rowIndex="2" GridPane.valignment="CENTER"
+                                  GridPane.vgrow="ALWAYS">
+                            <font>
+                                <Font name="Times New Roman" size="14.0"/>
+                            </font>
+                        </TextArea>
+                        <Label text="Loaded File Contents">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Encoded Message" GridPane.columnIndex="1">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Decoded Message" GridPane.columnIndex="2">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </GridPane>
+                <GridPane alignment="BOTTOM_CENTER" hgap="10.0" VBox.vgrow="NEVER">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="279.20001220703125" minWidth="10.0"
+                                           prefWidth="101.60003662109372"/>
+                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="450.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
+                    </rowConstraints>
+                    <children>
+                        <CheckBox fx:id="isFastCBox" mnemonicParsing="false" text="Fast test "
+                                  GridPane.halignment="LEFT" GridPane.hgrow="NEVER">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                        </CheckBox>
+                        <TextField fx:id="sampleTField" editable="false" promptText="Enter Sample Plaintext..."
+                                   GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
+                            <font>
+                                <Font name="Times New Roman" size="14.0"/>
+                            </font>
+                        </TextField>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" right="10.0"/>
+                    </padding>
+                </GridPane>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
